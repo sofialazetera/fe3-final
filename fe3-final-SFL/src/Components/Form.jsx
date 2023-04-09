@@ -67,7 +67,7 @@ const Form = () => {
         </form>
       )}
       {!isInputInformationOk.inputs && (
-        <p className="error">Please verify your information again</p>
+        <p className="error">Please, verify your information again</p>
       )}
       {isInputInformationOk.submit && (
         <p>Hi {userName}, wi will contact you as soon as possible via email. Thanks</p>
