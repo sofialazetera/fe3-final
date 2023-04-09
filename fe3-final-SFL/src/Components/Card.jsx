@@ -19,7 +19,6 @@ const Card = ({ dentist }) => {
 
   const addFav = (dentist) => {
     dispatch({ type: "ADD_TO_FAV", payload: dentist });
-    // Aqui iria la logica para agregar la Card en el localStorage
   };
 
   const removeFav =(dentist) =>{
@@ -28,11 +27,7 @@ const Card = ({ dentist }) => {
 
   return (
     <div className="card">
-      {/* En cada card deberan mostrar en name - username y el id */}
 
-      {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
-
-      {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
       <Link to={`/dentist/${dentist.id}`}>
         <h2>{dentist.name}</h2>
         <img
@@ -40,6 +35,7 @@ const Card = ({ dentist }) => {
           src="/images/doctor.jpg"
           alt="doctor placeholder"
         />
+   
       </Link>
       
         <button
