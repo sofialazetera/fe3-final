@@ -2,18 +2,23 @@ import React, { useContext, useState } from "react";
 import { ContextGlobal } from "./utils/global.context";
 
 const Form = () => {
-  //Aqui deberan implementar el form completo con sus validaciones
+  //Creacion de use states para el manejo del formulario
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [isInputInformationOk, setIsInputInformationOk] = useState({
     inputs: true,
     submit: false,
   });
+
+  //Uso de contexto
   const { state:{isthemeBlack}} = useContext(ContextGlobal);
 
+  //manejo del cambio de los inputs
   const onChangeUserName = (e) => setUserName(e.target.value);
   const onChangeUserEmail = (e) => setUserEmail(e.target.value);
 
+
+  //Validaciones
   const validateUserName = (userName) => {
     if (userName.length > 2 && userName[0] != " ") {
       return true;
@@ -26,6 +31,8 @@ const Form = () => {
     const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     return emailRegex.test(email);
   };
+
+  //Logica del onSubmit
   const onSubmitForm = (e) => {
     e.preventDefault();
     const isNameValid = validateUserName(userName);
@@ -43,7 +50,7 @@ const Form = () => {
           <div>
             <input
               type="text"
-              placeholder="Ingrese su nombre"
+              placeholder="Enter your name"
               value={userName}
               onChange={onChangeUserName}
             />
@@ -51,7 +58,7 @@ const Form = () => {
           <div>
             <input
               type="email"
-              placeholder="Ingrese su email"
+              placeholder="Enter your email"
               value={userEmail}
               onChange={onChangeUserEmail}
             />
@@ -60,10 +67,10 @@ const Form = () => {
         </form>
       )}
       {!isInputInformationOk.inputs && (
-        <p className="error">Por favor verifique su información nuevamente</p>
+        <p className="error">Please verify your information again</p>
       )}
       {isInputInformationOk.submit && (
-        <p>Gracias {userName}, te contactaremos cuando antes vía mail</p>
+        <p>Hi {userName}, wi will contact you as soon as possible via email. Thanks</p>
       )}
     </div>
   );
